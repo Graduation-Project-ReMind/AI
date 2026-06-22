@@ -1,0 +1,21 @@
+services:
+  ai-server:
+    build: .
+    container_name: remind-new-ai-server
+
+    ports:
+      - "8002:8002"
+
+    environment:
+      AI_HOST: 0.0.0.0
+      AI_PORT: 8002
+
+      PUBLIC_WS_URL: wss://higher-borders-deployment-musical.trycloudflare.com
+
+      AI_SERVICE_TOKEN: shared-service-token
+
+      LARAVEL_WEBHOOK_URL: https://tabloid-handsfree-confusion.ngrok-free.dev/api/ai/activity-webhook
+
+      LARAVEL_WEBHOOK_TOKEN: your-secret-webhook-token
+
+    restart: unless-stopped
